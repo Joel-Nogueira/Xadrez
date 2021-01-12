@@ -14,15 +14,45 @@
             _pecas = new Peca[Linhas, Colunas];
         }
 
-        public Peca peca(int linha, int coluna)
+        public Peca Peca(Posicao pos)
+        {
+            return _pecas[pos.Linha, pos.Coluna];
+        }
+
+        public Peca Peca(int linha, int coluna)
         {
             return _pecas[linha, coluna];
+        }
+
+        public bool ExistePeca(Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return Peca(pos) != null;
         }
 
         public void ColocarPeca(Peca peca, Posicao posicao)
         {
             _pecas[posicao.Linha, posicao.Coluna] = peca;
             peca.Posicao = posicao;
+        }
+
+        public bool PosicaoValida(Posicao pos)
+        {
+            bool linhaEhValida = (pos.Linha < 0 || pos.Linha >= Linhas);
+            bool colunaEhValida = (pos.Coluna < 0 || pos.Coluna >= Colunas);
+            if (linhaEhValida || colunaEhValida)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void ValidarPosicao(Posicao pos)
+        {
+            if (!PosicaoValida(pos))
+            {
+                throw new TabuleiroException("Posição inválida!");
+            }
         }
     }
 }
