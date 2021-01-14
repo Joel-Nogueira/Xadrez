@@ -21,7 +21,7 @@ namespace xadrez
             Posicao posicao = new Posicao(0, 0);
 
             //acima
-            posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna);
+            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
@@ -34,7 +34,7 @@ namespace xadrez
             }
 
             //direita
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna + 1);
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
@@ -47,7 +47,7 @@ namespace xadrez
             }
 
             //baixo
-            posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna);
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
@@ -60,7 +60,7 @@ namespace xadrez
             }
 
             //esquerda
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna - 1);
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
