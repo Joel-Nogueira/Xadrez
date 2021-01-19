@@ -101,10 +101,10 @@ namespace xadrez
             return aux;
         }
 
-        public HashSet<Peca> PecaEmJogo(Cor cor)
+        public HashSet<Peca> PecasEmJogo(Cor cor)
         {
             HashSet<Peca> aux = new HashSet<Peca>();
-            foreach (Peca p in _capturadas)
+            foreach (Peca p in _pecas)
             {
                 if (p.Cor == cor)
                 {
