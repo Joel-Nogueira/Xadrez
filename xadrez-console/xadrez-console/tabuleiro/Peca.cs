@@ -42,6 +42,12 @@
             return false;
         }
 
+        public bool PodeMoverPara(Posicao posicao)
+        {
+            bool[,] matriz = MovimentosPossiveis();
+            return matriz[posicao.Linha, posicao.Coluna];
+        }
+
         public abstract bool[,] MovimentosPossiveis();
     }
 }
