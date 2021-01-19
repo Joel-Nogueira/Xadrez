@@ -26,6 +26,22 @@
             return (p == null) || (p.Cor != Cor);
         }
 
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool[,] matriz = MovimentosPossiveis();
+            for (int i = 0; i < Tabuleiro.Linhas; i++)
+            {
+                for (int j = 0; j < Tabuleiro.Colunas; j++)
+                {
+                    if (matriz[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public abstract bool[,] MovimentosPossiveis();
     }
 }

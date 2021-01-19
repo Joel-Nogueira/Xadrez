@@ -38,6 +38,22 @@ namespace xadrez
             }
         }
 
+        public void ValidarPosicaoDeOrigem(Posicao posicao)
+        {
+            if (Tabuleiro.Peca(posicao) == null)
+            {
+                throw new TabuleiroException("Não existe peça na posição de origem escolhida!");
+            }
+            if (JogadorAtual != Tabuleiro.Peca(posicao).Cor)
+            {
+                throw new TabuleiroException("A peça de origem escolhida não é sua!");
+            }
+            if (!Tabuleiro.Peca(posicao).ExisteMovimentosPossiveis())
+            {
+                throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
+            }
+        }
+
         private void ExecutaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = Tabuleiro.RetirarPeca(origem);

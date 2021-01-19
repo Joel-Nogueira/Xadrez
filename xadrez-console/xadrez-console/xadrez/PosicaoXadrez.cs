@@ -15,7 +15,20 @@ namespace xadrez
 
         public Posicao ToPosicao()
         {
+            ValidaPosicao();
             return new Posicao(8 - Linha, Coluna - 'a');
+        }
+
+        public void ValidaPosicao()
+        {
+            if (Coluna < 'a' || Coluna > 'h')
+            {
+                throw new TabuleiroException("Nome da coluna inválido!");
+            }
+            if (Linha < 1 || Linha > 8)
+            {
+                throw new TabuleiroException("Número da linha inválido!");
+            }
         }
 
         public override string ToString()
