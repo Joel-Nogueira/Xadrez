@@ -130,11 +130,11 @@ namespace xadrez
                     {
                         if (matriz[i, j])
                         {
-                            Posicao RenanOrigem = p.Posicao;
+                            Posicao origem = p.Posicao;
                             Posicao destino = new Posicao(i, j);
                             Peca pecaCapturada = ExecutaMovimento(p.Posicao, destino);
                             bool xeque = OReiEstaEmXeque(cor);
-                            DesfazerMovimento(p.Posicao, destino, pecaCapturada);
+                            DesfazerMovimento(origem, destino, pecaCapturada);
                             if (!xeque)
                             {
                                 return false;
