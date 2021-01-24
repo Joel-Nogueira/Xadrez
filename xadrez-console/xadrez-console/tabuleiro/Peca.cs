@@ -47,7 +47,7 @@
             return false;
         }
 
-        public bool PodeMoverPara(Posicao posicao)
+        public bool MovimentoPossivel(Posicao posicao)
         {
             bool[,] matriz = MovimentosPossiveis();
             return matriz[posicao.Linha, posicao.Coluna];
