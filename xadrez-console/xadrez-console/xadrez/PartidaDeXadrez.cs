@@ -41,6 +41,24 @@ namespace xadrez
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
 
+            Peca p = Tabuleiro.Peca(destino);
+
+            //Jogada Especial Promoção
+            if (p is Peao)
+            {
+                bool PeaoBrancoEstaNaUltimaLinha = (p.Cor == Cor.Branca) && (destino.Linha == 0);
+                bool PeaoPretoEstaNaUltimaLinha = (p.Cor == Cor.Preta) && (destino.Linha == 7);
+                bool EhPromocao = PeaoBrancoEstaNaUltimaLinha || PeaoPretoEstaNaUltimaLinha;
+                if (EhPromocao)
+                {
+                    p = Tabuleiro.RetirarPeca(destino);
+                    _pecas.Remove(p);
+                    Peca dama = new Dama(Tabuleiro, p.Cor);
+                    Tabuleiro.ColocarPeca(dama, destino);
+                    _pecas.Add(dama);
+                }
+            }
+
             xeque = OReiEstaEmXeque(CorAdversaria(JogadorAtual));
 
             if (EhXequeMate(CorAdversaria(JogadorAtual)))
@@ -52,8 +70,6 @@ namespace xadrez
                 Turno++;
                 MudaJogador();
             }
-
-            Peca p = Tabuleiro.Peca(destino);
 
             //Jogada Especial EnPassant
             bool EhOPrimeiroMovimento = (destino.Linha == origem.Linha - 2) || (destino.Linha == origem.Linha + 2);
